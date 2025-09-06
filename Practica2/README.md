@@ -9,5 +9,4 @@
 3. ***Comentarios sobre la practica***
 - No tuve problemas para realizar los ejercicios del 1 al 10, fue muy facil y rapido, pero el ejercicio extra de cuadrdados fue confuso pues al intentar resolverlo con una tupla y sin usar recursion solo encontraba fallos hasta que logre completarlo usando una lista por comprensión
 
-
-
+![Propmt](prompt.png)
