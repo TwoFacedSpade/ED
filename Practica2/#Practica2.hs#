@@ -106,7 +106,7 @@ distanciaPuntos ((a, b), (c, d)) = sqrt((c-a)^2 + (d-b)^2)
 {-
 Funcion: Cuadrados
 Descripcion: Recibe una tupla de tipo entero y devuelve los cuadrados de los numeros dentro del rango de la tupla en una lista
-Uso: cuadrados (1,5) = [1,4,9,16,25]
+Uso: cuadrados (1,5 ) = [1,4,9,16,25]
 -}
 cuadrados :: (Int,Int) -> [Int]
 cuadrados (a,b) = [a*a | (a) <- [a..b]]
