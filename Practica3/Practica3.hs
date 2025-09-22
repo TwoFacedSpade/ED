@@ -20,7 +20,6 @@ creditos c l = [ m | (c', m) <- l, c' == c ]
 El problema fue que no se como usar una lista que yo cree (en este caso materias) como argumento de la funcion, siempre me saltaba el error de que
 materias y l no coincidian en sus tipos, no importa como intente escribirlo nunca funciono.
 -}
-
 creditos :: Int -> [String]
 creditos x =
   if x==10
@@ -31,12 +30,12 @@ creditos x =
       then  ["Ingles 1"]
       else ["No hay una materia con esa cantidad de creditos"]
 
+
 {-
 Funcion: Negativos
 Descripcion: Cuenta los numeros negativos de una lista 
 Uso: negativos [-2,-1,0,1,2] = 2
 -}
-
 negativos :: [Int] -> Int
 negativos xs = length[ x | x <- xs, x < 0 ]
 
@@ -54,7 +53,6 @@ factores evalua los factores del numero en forma de una lista y lo devuelve a es
 osea 1 y el mismo numero lo que efectivamente seria un numero primo, devuelve true a primos lo que hace que primos meta el valor en la lista y
 pase al siguiente valorm, asi hasta llegar al valor tope que introdujo el usuario
 -}
-
 factores :: Int->[Int]
 factores x = [y | y <-[1..x], (mod x y)==0]
 
@@ -73,10 +71,31 @@ Uso: conjuntoLIsta [1, 2, 2, 1, 3] = [1,2,3]
 Esta implementacion la use aunque usa recursion y pattern matching porque no encontre otra forma de comparar los elementos de la lista sin eliminar todos los elementos,
 me refiero a que usaba como condicion (x/=x) lo que dejaba la lista vacia y no encontre una forma de recorrer la lista por lo que buscando tutoriales en internet encontre esta forma de hacerlo
 con recursion y como vimos un poco de recursion en clase pense que estaria bien.
-
 -}
+
 
 conjuntoLista :: [Int] -> [Int]
 conjuntoLista [] = []
 conjuntoLista [x] = [x]
 conjuntoLista (x:xs) = x: [y | y <- conjuntoLista(xs), y/=x]
+
+{-
+Hola profe, esta es otra forma que se me ocurrio el 19/19/2025, no le haga caso, solo lo pongo porque en otra tarea me pidieron esta msima fucncion y queria ver si era correcta
+Es lo mismo que la de arriba pero sin usar la lista por comprension, solo usando recursion y pattern matching
+
+conjuntoLista :: [Int] -> [Int]
+conjuntoLista [] = []
+conjuntoLista [x] = [x]
+conjuntoLista (x:xs) =
+  if check(x, xs) == True
+  then x: conjuntoLista(xs) 
+  else  conjuntoLista(xs)
+
+check :: (Int, [Int]) -> Bool
+check (a,[]) = False
+check ((a),(x:xs)) =
+  if a == x
+    then True
+    else check(a, xs)
+-}
+  
