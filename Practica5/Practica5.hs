@@ -5,11 +5,11 @@ import Aux
 {-
 Funcion: HollerBack
 Descripcion: Convierte una cadena a mayusculas
-Uso: hollerBack haskell = HASKELL
+Uso: hollerBack "haskell" = HASKELL
 -}
 hollerBack :: String -> String
 hollerBack [] = []
-hollerBack malis = map toUpper malis 
+hollerBack malis = [toUpper (head malis)] ++ hollerBack(tail malis) 
 
 
 {-
