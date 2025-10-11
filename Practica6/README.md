@@ -66,7 +66,6 @@ graph TB
 -- c) AB 3 (AB 7 (AB 12 Vacio Vacio) Vacio) (AB 6 (AB 11 Vacio Vacio) (AB 10 Vacio Vacio))
 ```mermaid
 graph TB
-   graph TB
     A((3))-->B((7))
     B-->C((12))
     B-->D((Vacio))
