@@ -38,9 +38,6 @@ Uso: negativos [-2,-1,0,1,2] = 2
 -}
 negativos :: [Int] -> Int
 negativos xs = length[ x | x <- xs, x < 0 ]
-
-
-{-
 Funcion: Primos
 Descripcion: Devuelve los numeros primos desde 1 hasta el elemento indicado por el usuario
 Uso: primos 20 = [2,3,5,7,11,13,17,19]

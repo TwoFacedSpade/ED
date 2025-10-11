@@ -1,4 +1,4 @@
-import Aux
+ import Aux
 
 {-
 Funcion: a_natural
