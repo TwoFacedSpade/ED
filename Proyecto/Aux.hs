@@ -61,14 +61,15 @@ yaEvaluados c (x:xs) =
 
 {-
   Funcion: quicksort
-  Descripcion: Ordena la tabla de valores de manera descendiente o si los valores son iguales, de manera lexicografica
+  Descripcion: Ordena la tabla de valores de manera lexicografica
+  
 -}
-quicksort :: (Ord a) => [a] -> [a]
+quicksort :: (Ord b) => [(a,b)] -> [(a,b)]
 quicksort [] = []
-quicksort (x:xs) =
-  quicksort (filter (>= x) xs)
-  ++ [x] ++
-  quicksort (filter (<= x) xs)
+quicksort ((a,b):xs) =
+  quicksort [x | x <- xs, snd x > b]
+  ++ [(a,b)] ++
+  quicksort [x | x <- xs, snd x <= b]
 
 {- *****************************************
    ** 
