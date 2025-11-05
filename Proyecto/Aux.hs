@@ -1,6 +1,4 @@
 module Aux ( Huffa(Vacio,Nodo), tablaFrecuencias, transformador, traductor, arbol, decodificador )  where 
-import Data.List
-import Data.Function
 data Huffa = Vacio | Nodo Huffa Char deriving (Eq, Ord, Show)
 
 {- *****************************************
@@ -34,11 +32,12 @@ data Huffa = Vacio | Nodo Huffa Char deriving (Eq, Ord, Show)
 -}
 tablaFrecuencias :: String -> [(Char, Int)]
 tablaFrecuencias [] = []
-tablaFrecuencias (x:xs) = sorte( [(x , (1 + cuentaApariciones x xs ))] ++ tablaFrecuencias(yaEvaluados x xs) ) 
+tablaFrecuencias (x:xs) = quicksort( [(x , (1 + cuentaApariciones x xs ))] ++ tablaFrecuencias(yaEvaluados x xs) ) 
 
 {-
   Funcion: cuentaApariciones
   Descripcion: cuenta las veces que aparece una letra en la frase
+  
 -}
 cuentaApariciones :: Char -> String -> Int
 cuentaApariciones c [] = 0
@@ -61,12 +60,15 @@ yaEvaluados c (x:xs) =
 
 
 {-
-  Funcion: sorte
-  Descripcion: Ordena la tabla de valores de manera ascendente
-  Esta la saque de internet, no se muy bien como funciona, pero funciona 
+  Funcion: quicksort
+  Descripcion: Ordena la tabla de valores de manera descendiente o si los valores son iguales, de manera lexicografica
 -}
-sorte :: (Ord b) => [(a,b)] -> [(a,b)]
-sorte = sortBy (flip compare `on` snd)
+quicksort :: (Ord a) => [a] -> [a]
+quicksort [] = []
+quicksort (x:xs) =
+  quicksort (filter (>= x) xs)
+  ++ [x] ++
+  quicksort (filter (<= x) xs)
 
 {- *****************************************
    ** 
@@ -227,7 +229,7 @@ ceros (x:xs) =
   if x == '1' 
   then xs
   else ceros xs
-   
+
 {- *****************************************
    ** 
    **  fin  decodificadores 
