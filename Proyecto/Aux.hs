@@ -61,8 +61,8 @@ yaEvaluados c (x:xs) =
 
 {-
   Funcion: quicksort
-  Descripcion: Ordena la tabla de valores de manera lexicografica
-  
+  Descripcion: Ordena la tabla de valores de manera descendente
+  Uso: quicksort [('a',2),('b',3),('c',6),('d',10)] = [('d',10),('c',6),('b',3),('a',2)]
 -}
 quicksort :: (Ord b) => [(a,b)] -> [(a,b)]
 quicksort [] = []
