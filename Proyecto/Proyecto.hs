@@ -6,7 +6,7 @@ import Aux
   Uso: huffmandecodificador ("1010010001",Nodo (Nodo (Nodo (Nodo Vacio 'a') 'l') 'o') 'h') = hola
 -}
 huffmandecodificador :: (String, Huffa) -> String
-huffmandecodificador (a,b) = decodificador (a,b)
+huffmandecodificador (a,b) = decodificador a b b
 
 {-
   Funcion: huffmancodificador 
@@ -15,4 +15,4 @@ huffmandecodificador (a,b) = decodificador (a,b)
 -}
 huffmancodificador :: String -> (String, Huffa)
 huffmancodificador [] = ([],Vacio ) 
-huffmancodificador frase = ( (traductor frase (transformador (tablaFrecuencias(frase)))) , (arbol(tablaFrecuencias(frase)))   )
+huffmancodificador frase = codificador frase
