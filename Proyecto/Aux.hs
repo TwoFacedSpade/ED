@@ -6,14 +6,14 @@ data Huffa = Vacio | Nodo Huffa Char deriving (Eq, Ord, Show)
    **   Funciones Principales
    **
    *****************************************
-
+-}
 codificador :: String -> (String, Huffa)
 codificador [] = ([],Vacio ) 
 codificador frase = ( (traductor frase arbolT arbolT) , (arbol arbolin) )  
-  where arbolin = tablaFrecuencias(frase)  
-        arbolT  = transformador "1" arbolin 
-
-
+  where
+    arbolin = tablaFrecuencias(frase)  
+    arbolT  = transformador "1" arbolin
+    
 {- *****************************************
    ** 
    **   Tabla
@@ -125,11 +125,14 @@ transformador margo ((a,b):xs) = [(a,margo)]  ++ transformador ( "0" ++ margo ) 
    **  decodificador
    **
    *****************************************
+-}
 
+{-
   Funcion: decodificador
   Descripcion: Decodifica un binario de acuerdo con su arbol Huffa 
   Uso: decodificador ("101001",Nodo (Nodo (Nodo Vacio 'c') 'b') 'a') = "abc"  
 -}
+
 decodificador :: String -> Huffa -> Huffa -> String
 decodificador [] (Nodo iz c) original = []
 decodificador ('0':res) (Nodo iz _) original = decodificador res iz original
