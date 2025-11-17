@@ -6,7 +6,6 @@ data Huffa = Vacio | Nodo Huffa Char deriving (Eq, Ord, Show)
    **   Funciones Principales
    **
    *****************************************
--}
 
 codificador :: String -> (String, Huffa)
 codificador [] = ([],Vacio ) 
