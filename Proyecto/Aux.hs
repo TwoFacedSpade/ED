@@ -3,19 +3,6 @@ data Huffa = Vacio | Nodo Huffa Char deriving (Eq, Ord, Show)
 
 {- *****************************************
    ** 
-   **   Funciones Principales
-   **
-   *****************************************
--}
-codificador :: String -> (String, Huffa)
-codificador [] = ([],Vacio ) 
-codificador frase = ( (traductor frase arbolT arbolT) , (arbol arbolin) )  
-  where
-    arbolin = tablaFrecuencias(frase)  
-    arbolT  = transformador "1" arbolin
-    
-{- *****************************************
-   ** 
    **   Tabla
    **
    *****************************************
@@ -109,8 +96,8 @@ traductor (y:ys) ((a,b):xs) arbol =
   Uso: transformador [('a',9), ('b',2), ('c',1)] = [('a',"1"), ('b',"01"), ('c',"001")]
 -}
 transformador :: String -> [(Char, Int)] -> [(Char, String)]
-transformador margo [] = []
-transformador margo ((a,b):xs) = [(a,margo)]  ++ transformador ( "0" ++ margo ) xs  
+transformador binario [] = []
+transformador binario ((a,b):xs) = [(a,binario)]  ++ transformador ( "0" ++ binario ) xs  
 
 {- *****************************************
    ** 
@@ -142,6 +129,30 @@ decodificador ('1':res) (Nodo _ c) original = [c] ++ decodificador res original 
 {- *****************************************
    ** 
    **  fin  decodificador 
+   **
+   *****************************************
+
+*****************************************************************************
+
+   *****************************************
+   ** 
+   **  codificador
+   **
+   *****************************************
+
+  Funcion: codificador
+  Descripcion: Codifica una frase a un binario y un arbol huffa 
+  Uso: codificador "alabama" = ("1011001100011",Nodo (Nodo (Nodo (Nodo Vacio 'm') 'b') 'l') 'a')
+-}
+codificador :: String -> (String, Huffa)
+codificador [] = ([],Vacio ) 
+codificador frase = ( (traductor frase arbolT arbolT) , (arbol arbolO) )  
+  where arbolO = tablaFrecuencias(frase)  
+        arbolT  = transformador "1" arbolO c
+
+{- *****************************************
+   ** 
+   **  fin  codificador 
    **
    *****************************************
 -}
