@@ -148,7 +148,7 @@ codificador :: String -> (String, Huffa)
 codificador [] = ([],Vacio ) 
 codificador frase = ( (traductor frase arbolT arbolT) , (arbol arbolO) )  
   where arbolO = tablaFrecuencias(frase)  
-        arbolT  = transformador "1" arbolO c
+        arbolT  = transformador "1" arbolO 
 
 {- *****************************************
    ** 
